@@ -192,3 +192,35 @@
 // setTimeout(() => console.log("this is setTimeout 1"), 0);
 // Promise.resolve().then(() => console.log("this is Promise.resolve 1"));
 // process.nextTick(() => console.log("this is process.nextTick 1"));
+
+
+// Experiment 15 - > mix 
+/*
+const fs = require("fs");
+
+fs.readFile(__filename, () => {
+  console.log("this is readFile 1");
+  setTimeout(() => {
+    console.log("setTimeout under readFile1");
+  })
+  process.nextTick(() => {
+    console.log("----tick in ReadFile1");
+  })
+});
+
+fs.readFile(__filename, () => {
+  console.log("this is readFile 2");
+});
+
+process.nextTick(() => console.log("this is process.nextTick 1"));
+Promise.resolve().then(() => console.log("this is Promise.resolve 1"));
+setTimeout(() => {
+  console.log("this is setTimeout 1")
+  process.nextTick(() => {console.log("tick inside the callout")})
+  
+}, 0);
+
+
+for (let i = 0; i < 1000000000; i++) {}
+
+*/
